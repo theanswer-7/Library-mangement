@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+        <bean id="helloSpring" class="com.it.bean.HelloSpring">
+            <property name="userName" value="张三"></property>
+        </bean>
+    <bean id="user1" class="com.it.bean.User1">
+        <property name="id" value="1"></property>
+        <property name="userName" value="admin"></property>
+        <property name="password" value="123"></property>
+    </bean>
+
+    <bean id="user2" class="com.it.bean.User2">
+        <property name="id" value="2"/>
+        <property name="username" value="lily"/>
+        <property name="password" value="123"/>
+    </bean>
+    <bean id="userDao" class="com.it.dao.UserDaoImpl"/>
+
+    <!-- Service：id 必须是 userService -->
+    <bean id="userService" class="com.it.service.UserServiceImpl">
+        <property name="userDao" ref="userDao"/>
+    </bean>
+</beans>

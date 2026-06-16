@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.it.dao.BookMapper">
+    <update id="editBook" parameterType="book">
+        UPDATE book <trim prefix="set" suffixOverrides=",">
+        <if test="name!=null">
+            book_name=#{name},
+        </if>
+        <if test="isbn!=null">
+            book_isbn=#{isbn},
+        </if>
+        <if test="pagination!=null">
+            book_pagination=#{pagination},
+        </if>
+        <if test="price!=null">
+            book_price=#{price},
+        </if>
+        <if test="uploadTime!=null">
+            book_uploadTime=#{uploadTime},
+        </if>
+        <if test="status!=null">
+            book_status=#{status},
+        </if>
+        <if test="borrower!=null">
+            book_borrower=#{borrower},
+        </if>
+        <if test="borrowTime!=null">
+            book_borrowTime=#{borrowTime},
+        </if>
+        <if test="returnTime!=null">
+            book_returnTime=#{returnTime},
+        </if>
+        <if test="press!=null">
+            book_press=#{press},
+        </if>
+        <if test="author!=null">
+            book_author=#{author}
+        </if>
+    </trim>
+        where book_id=#{id}
+    </update>
+    <insert id="addBook" parameterType="book">
+        insert into book
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="name!=null">book_name,</if>
+            <if test="isbn!=null">book_isbn,</if>
+            <if test="press!=null">book_press,</if>
+            <if test="author!=null">book_author,</if>
+            <if test="pagination!=null">book_pagination,</if>
+            <if test="price!=null">book_price,</if>
+            <if test="uploadTime!=null">book_uploadtime,</if>
+            <if test="status!=null">book_status,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="name!=null">#{name},</if>
+            <if test="isbn!=null">#{isbn},</if>
+            <if test="press!=null">#{press},</if>
+            <if test="author!=null">#{author},</if>
+            <if test="pagination!=null">#{pagination},</if>
+            <if test="price!=null">#{price},</if>
+            <if test="uploadTime!=null">#{uploadTime},</if>
+            <if test="status!=null">#{status},</if>
+        </trim>
+    </insert>
+
+</mapper>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.it.dao.EmployeeMapper">
+
+    <select id="selectById" resultType="com.it.pojo.Employee">
+        SELECT * FROM employee WHERE id = #{id}
+    </select>
+     <insert id="insert" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO employee(name,age,position)
+        VALUES (#{name},#{age},#{position})
+    </insert>
+
+    <update id="updateById">
+        UPDATE employee
+        SET name=#{name},age=#{age},position=#{position}
+        WHERE id=#{id}
+    </update>
+
+    <delete id="deleteById">
+        DELETE FROM employee WHERE id=#{id}
+    </delete>
+
+</mapper>
