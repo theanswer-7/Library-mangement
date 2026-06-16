@@ -29,6 +29,7 @@
                 <th>借阅人</th>
                 <th>借阅时间</th>
                 <th>应归还时间</th>
+                <th>超时天数</th>
                 <th>操作</th>
             </tr>
             </thead>
@@ -42,6 +43,7 @@
                     <td>${book.borrower}</td>
                     <td>${book.borrowTime}</td>
                     <td style="color:red;">${book.returnTime}</td>
+                    <td style="color:red;">${book.overdueDays}天</td>
                     <td>
                         <c:if test="${USER_SESSION.role =='ADMIN'}">
                             <button class="btn btn-warning btn-xs" onclick="sendRemind('${book.borrower}','${book.name}')">超时提醒</button>

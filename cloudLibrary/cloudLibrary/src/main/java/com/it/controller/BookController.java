@@ -169,6 +169,19 @@ public class BookController {
             return mav;
         }
         List<Book> books = bookService.searchOverdue(pageNum, pageSize);
+        // 计算每本书的超时天数
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String todayStr = sdf.format(new Date());
+        for (Book book : books) {
+            try {
+                Date returnDate = sdf.parse(book.getReturnTime());
+                Date today = sdf.parse(todayStr);
+                long diff = today.getTime() - returnDate.getTime();
+                book.setOverdueDays((int) (diff / (1000 * 60 * 60 * 24)));
+            } catch (Exception e) {
+                book.setOverdueDays(0);
+            }
+        }
         Page page = (Page) books;
         PageResult pageResult = new PageResult(page.getTotal(), books);
         ModelAndView modelAndView = new ModelAndView();

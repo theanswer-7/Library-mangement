@@ -9,4 +9,5 @@ public interface MessageService {
     List<Message> selectByReceiver(String jieShouRen);
     Message findById(int id);
     int markRead(int id);
+    int deleteMessage(int id);
 }

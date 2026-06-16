@@ -29,4 +29,8 @@ public interface MessageMapper {
     // 标记消息为已读
     @Update("update message set status=1 where id=#{id}")
     public int markRead(int id);
+
+    // 删除消息
+    @Delete("delete from message where id=#{id}")
+    public int deleteById(int id);
 }

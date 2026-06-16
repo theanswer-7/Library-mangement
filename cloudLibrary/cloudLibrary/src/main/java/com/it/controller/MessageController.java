@@ -77,6 +77,18 @@ public class MessageController {
         }
     }
 
+    // 删除消息
+    @RequestMapping("/deleteMessage")
+    @ResponseBody
+    public Result deleteMessage(int id) {
+        int count = messageService.deleteMessage(id);
+        if (count > 0) {
+            return new Result(true, "删除成功", null);
+        } else {
+            return new Result(false, "删除失败", null);
+        }
+    }
+
     // 申请解除黑名单
     // 获取管理员列表
     @RequestMapping("/getAdmins")

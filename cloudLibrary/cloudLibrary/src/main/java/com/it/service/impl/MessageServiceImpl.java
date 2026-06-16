@@ -33,4 +33,9 @@ public class MessageServiceImpl implements MessageService {
     public int markRead(int id) {
         return messageMapper.markRead(id);
     }
+
+    @Override
+    public int deleteMessage(int id) {
+        return messageMapper.deleteById(id);
+    }
 }

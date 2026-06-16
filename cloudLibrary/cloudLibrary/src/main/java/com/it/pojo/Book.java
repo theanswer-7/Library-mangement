@@ -13,6 +13,7 @@ public class Book implements Serializable {
     private String borrower;   //图书借阅人
     private String borrowTime; //图书借阅时间
     private String returnTime; //图书预计归还时间
+    private Integer overdueDays; //超时天数
     public Integer getId() {
         return id;
     }
@@ -84,5 +85,11 @@ public class Book implements Serializable {
     }
     public void setReturnTime(String returnTime) {
         this.returnTime = returnTime;
+    }
+    public Integer getOverdueDays() {
+        return overdueDays;
+    }
+    public void setOverdueDays(Integer overdueDays) {
+        this.overdueDays = overdueDays;
     }
 }

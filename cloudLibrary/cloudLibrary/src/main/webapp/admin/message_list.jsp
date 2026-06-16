@@ -41,6 +41,7 @@
                         <c:if test="${msg.status == 0}">
                             <button class="btn btn-success btn-xs" onclick="markRead(${msg.id})">确认已读</button>
                         </c:if>
+                        <button class="btn btn-danger btn-xs" onclick="deleteMsg(${msg.id})">删除</button>
                     </td>
                 </tr>
             </c:forEach>
@@ -125,6 +126,14 @@ function approveUnban() {
 
 function markRead(id) {
     $.post(getProjectPath() + "/message/markRead", {id: id}, function(res) {
+        alert(res.message);
+        if (res.success) location.reload();
+    });
+}
+
+function deleteMsg(id) {
+    if (!confirm("确定要删除该消息吗？")) return;
+    $.post(getProjectPath() + "/message/deleteMessage", {id: id}, function(res) {
         alert(res.message);
         if (res.success) location.reload();
     });
